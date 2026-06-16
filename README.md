@@ -106,6 +106,11 @@ session/weekly; right-click pops a notification with the full breakdown.
 Then restart Waybar (`killall -SIGUSR2 waybar`, or on Omarchy:
 `omarchy restart waybar`).
 
+> **Rate limiting:** the `/api/oauth/usage` endpoint is rate-limited.
+> Keep `interval` at `300` (5 minutes) or higher — polling more frequently will
+> trigger HTTP 429 errors and the module will get stuck showing a stale value
+> until the limit clears.
+
 ## Configuration
 
 Environment variables (set them in the `exec` command if needed):
