@@ -143,7 +143,7 @@ if   (( left <= 10 )); then class="critical"
 elif (( left <= 25 )); then class="warning"
 else class="ok"; fi
 
-text="$icon ${left}%"
+text="$icon  ${left}%"
 [ "$SHOW_RESET" = "1" ] && text="$text · $reset"
 
 tooltip="<b>Claude usage</b>${stale}\n$(row "$m5" "$left5" "5h " "$reset5")\n$(row "$m7" "$left7" "7d " "$reset7")\n\n<i>Click to switch session / weekly</i>"
