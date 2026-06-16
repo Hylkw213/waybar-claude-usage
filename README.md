@@ -129,4 +129,3 @@ anywhere else, and the only thing written to disk is a usage-response cache in
 ## License
 
 MIT
-# waybar-claude-usage
