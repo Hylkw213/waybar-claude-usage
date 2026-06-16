@@ -100,10 +100,12 @@ session/weekly; right-click pops a notification with the full breakdown.
 **`~/.config/waybar/style.css`** — optional colours:
 
 ```css
-#custom-claude              { margin: 0 7.5px; }
-#custom-claude.warning      { color: #d9a55a; }
-#custom-claude.critical     { color: #cc5555; }
+#custom-claude              { margin: 0 7.5px; color: #a5ace6; }
 #custom-claude.idle         { opacity: 0.5; }
+
+/* optional: severity-based colours instead of a fixed accent
+#custom-claude.warning      { color: #d9a55a; }
+#custom-claude.critical     { color: #cc5555; } */
 ```
 
 Then restart Waybar (`killall -SIGUSR2 waybar`, or on Omarchy:
