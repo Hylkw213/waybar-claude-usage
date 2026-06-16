@@ -27,8 +27,11 @@ token stored by the Claude Code CLI in `~/.claude/.credentials.json`, and turns
 the `five_hour` / `seven_day` utilisation figures into "percent left".
 
 The bar text is the **5-hour session** percentage; the **weekly** limit is in
-the tooltip. The colour escalates based on whichever limit is closest to running
-out (warning ≤ 25% left, critical ≤ 10% left).
+the tooltip. **Click the module to toggle** the bar between the two windows —
+each uses a different icon so you always know which one you're looking at
+(`✳` session, `📅` weekly), and the tooltip marks the active one with `▸`. The
+colour escalates based on whichever limit is closest to running out (warning ≤
+25% left, critical ≤ 10% left).
 
 > **Note:** this is an undocumented endpoint used by the official tooling, not a
 > public API. It may change without warning. The script degrades gracefully
@@ -74,10 +77,16 @@ define it:
   "exec": "~/.local/share/waybar-claude-usage/claude-usage.sh",
   "return-type": "json",
   "interval": 120,
+  "signal": 8,
   "tooltip": true,
-  "on-click": "notify-send -u low 'Claude usage' \"$(~/.local/share/waybar-claude-usage/claude-usage.sh | jq -r .tooltip)\""
+  "on-click": "~/.local/share/waybar-claude-usage/claude-usage.sh --toggle",
+  "on-click-right": "notify-send -u low 'Claude usage' \"$(~/.local/share/waybar-claude-usage/claude-usage.sh | jq -r .tooltip)\""
 }
 ```
+
+`signal` must match `CLAUDE_USAGE_SIGNAL` (default `8`) — that's how the
+click-to-toggle refreshes the module instantly. Left-click toggles
+session/weekly; right-click pops a notification with the full breakdown.
 
 **`~/.config/waybar/style.css`** — optional colours:
 
@@ -97,8 +106,10 @@ Environment variables (set them in the `exec` command if needed):
 
 | Variable               | Default                        | Purpose                              |
 | ---------------------- | ------------------------------ | ------------------------------------ |
-| `CLAUDE_CREDENTIALS`   | `~/.claude/.credentials.json`  | Path to the Claude CLI credentials   |
-| `CLAUDE_USAGE_ICON`    | `nf-md-star_four_points`       | Glyph shown before the percentage    |
+| `CLAUDE_CREDENTIALS`     | `~/.claude/.credentials.json`  | Path to the Claude CLI credentials       |
+| `CLAUDE_USAGE_ICON`      | `nf-md-star_four_points`       | Session-view glyph                       |
+| `CLAUDE_USAGE_ICON_WEEK` | `nf-md-calendar_week`          | Weekly-view glyph                        |
+| `CLAUDE_USAGE_SIGNAL`    | `8`                            | Waybar RTMIN+N signal used for toggling  |
 
 ## Privacy
 
