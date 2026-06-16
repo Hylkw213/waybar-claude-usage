@@ -5,7 +5,7 @@ your **Claude subscription** you have left — straight from Anthropic, the same
 numbers you see on Claude Code's `/usage` screen.
 
 ```
-󰚩 70%
+✳ 70%
 ```
 
 Hover for the full breakdown:
@@ -40,7 +40,8 @@ out (warning ≤ 25% left, critical ≤ 10% left).
 - `bash`, `curl`, `jq`
 - The [Claude Code CLI](https://docs.claude.com/en/docs/claude-code) installed
   and logged in (so `~/.claude/.credentials.json` exists)
-- A Nerd Font for the `󰚩` glyph (Waybar's default font usually has it)
+- A Nerd Font for the icon glyph `nf-md-star_four_points` (Waybar's default
+  font usually has it)
 
 ## Install
 
@@ -97,7 +98,7 @@ Environment variables (set them in the `exec` command if needed):
 | Variable               | Default                        | Purpose                              |
 | ---------------------- | ------------------------------ | ------------------------------------ |
 | `CLAUDE_CREDENTIALS`   | `~/.claude/.credentials.json`  | Path to the Claude CLI credentials   |
-| `CLAUDE_USAGE_ICON`    | `󰚩`                            | Glyph shown before the percentage    |
+| `CLAUDE_USAGE_ICON`    | `nf-md-star_four_points`       | Glyph shown before the percentage    |
 
 ## Privacy
 
