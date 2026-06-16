@@ -80,7 +80,7 @@ define it:
 "custom/claude": {
   "exec": "~/.local/share/waybar-claude-usage/claude-usage.sh",
   "return-type": "json",
-  "interval": 120,
+  "interval": 300,
   "signal": 8,
   "tooltip": true,
   "on-click": "~/.local/share/waybar-claude-usage/claude-usage.sh --toggle",
