@@ -19,7 +19,7 @@ set -uo pipefail
 
 CRED="${CLAUDE_CREDENTIALS:-$HOME/.claude/.credentials.json}"
 CACHE="${XDG_RUNTIME_DIR:-/tmp}/claude-usage-cache.json"
-ICON="${CLAUDE_USAGE_ICON:-󰚩}"
+ICON="${CLAUDE_USAGE_ICON:-󰫢}"
 MODE="${1:-waybar}"
 
 waybar_err() { printf '{"text":"%s %s","class":"idle","tooltip":"%s"}\n' "$ICON" "$1" "$2"; }
