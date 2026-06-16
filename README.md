@@ -26,8 +26,9 @@ It calls `GET https://api.anthropic.com/api/oauth/usage` with the OAuth access
 token stored by the Claude Code CLI in `~/.claude/.credentials.json`, and turns
 the `five_hour` / `seven_day` utilisation figures into "percent left".
 
-The bar text is the **5-hour session** percentage; the **weekly** limit is in
-the tooltip. **Click the module to toggle** the bar between the two windows —
+The bar text is the **5-hour session** percentage followed by its **reset
+countdown** (e.g. `48% · 2h 56m`); the **weekly** limit is in the tooltip.
+**Click the module to toggle** the bar between the two windows —
 each uses a different icon so you always know which one you're looking at, and
 the tooltip marks the active one with `▸`:
 
@@ -117,6 +118,7 @@ Environment variables (set them in the `exec` command if needed):
 | `CLAUDE_USAGE_ICON`      | `nf-md-star_four_points`       | Session-view glyph                       |
 | `CLAUDE_USAGE_ICON_WEEK` | `nf-md-calendar_week`          | Weekly-view glyph                        |
 | `CLAUDE_USAGE_SIGNAL`    | `8`                            | Waybar RTMIN+N signal used for toggling  |
+| `CLAUDE_USAGE_RESET`     | `1`                            | Append reset countdown to the bar (`0` to hide) |
 
 ## Privacy
 

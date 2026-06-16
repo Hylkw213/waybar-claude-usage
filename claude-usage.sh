@@ -26,6 +26,7 @@ STATE="${XDG_RUNTIME_DIR:-/tmp}/claude-usage-view"
 ICON_SESSION="${CLAUDE_USAGE_ICON:-󰫢}"       # nf-md-star_four_points (session)
 ICON_WEEK="${CLAUDE_USAGE_ICON_WEEK:-󰸗}"      # nf-md-calendar_week (weekly)
 SIGNAL="${CLAUDE_USAGE_SIGNAL:-8}"
+SHOW_RESET="${CLAUDE_USAGE_RESET:-1}"           # 1 = append reset countdown to bar
 CACHE_TTL=60
 MODE="${1:-waybar}"
 
@@ -115,10 +116,13 @@ fi
 # Which window is the bar currently showing?  (Click toggles this.)
 view=$(cat "$STATE" 2>/dev/null); [ "$view" = "weekly" ] || view="session"
 if [ "$view" = "weekly" ]; then
-  icon="$ICON_WEEK"; left="$left7"; m5=" "; m7="▸"
+  icon="$ICON_WEEK"; left="$left7"; reset="$reset7"; m5=" "; m7="▸"
 else
-  icon="$ICON_SESSION"; left="$left5"; m5="▸"; m7=" "
+  icon="$ICON_SESSION"; left="$left5"; reset="$reset5"; m5="▸"; m7=" "
 fi
 
+text="$icon ${left}%"
+[ "$SHOW_RESET" = "1" ] && text="$text · $reset"
+
 tooltip="Claude usage${stale}\n${m5} Session (5h): ${left5}% left  ·  ${u5%.*}% used  ·  resets in ${reset5}\n${m7} Weekly:       ${left7}% left  ·  ${u7%.*}% used  ·  resets in ${reset7}\n\nClick to switch session/weekly"
-printf '{"text":"%s %s%%","class":"%s","tooltip":"%s"}\n' "$icon" "$left" "$class" "$tooltip"
+printf '{"text":"%s","class":"%s","tooltip":"%s"}\n' "$text" "$class" "$tooltip"
