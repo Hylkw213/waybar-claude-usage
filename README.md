@@ -4,9 +4,9 @@ A tiny [Waybar](https://github.com/Alexays/Waybar) module that shows how much of
 your **Claude subscription** you have left — straight from Anthropic, the same
 numbers you see on Claude Code's `/usage` screen.
 
-```
-✳ 70%
-```
+<p align="left">
+  <img src="assets/session.png" alt="Claude session usage in Waybar" height="22">
+</p>
 
 Hover for the full breakdown:
 
@@ -28,10 +28,17 @@ the `five_hour` / `seven_day` utilisation figures into "percent left".
 
 The bar text is the **5-hour session** percentage; the **weekly** limit is in
 the tooltip. **Click the module to toggle** the bar between the two windows —
-each uses a different icon so you always know which one you're looking at
-(`✳` session, `📅` weekly), and the tooltip marks the active one with `▸`. The
-colour escalates based on whichever limit is closest to running out (warning ≤
-25% left, critical ≤ 10% left).
+each uses a different icon so you always know which one you're looking at, and
+the tooltip marks the active one with `▸`:
+
+<p align="left">
+  <img src="assets/session.png" alt="Session view" height="22">
+  &nbsp;&nbsp;⟶&nbsp; click &nbsp;⟶&nbsp;&nbsp;
+  <img src="assets/weekly.png" alt="Weekly view" height="22">
+</p>
+
+The colour escalates based on whichever limit is closest to running out
+(warning ≤ 25% left, critical ≤ 10% left).
 
 > **Note:** this is an undocumented endpoint used by the official tooling, not a
 > public API. It may change without warning. The script degrades gracefully
